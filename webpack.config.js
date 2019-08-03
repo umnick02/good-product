@@ -10,7 +10,7 @@ module.exports = {
         './src/sass/style.sass'
     ],
     output: {
-        path: path.resolve(__dirname, 'docs'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
     },
     devtool: "source-map",
@@ -90,7 +90,7 @@ module.exports = {
                 to: './images'
             },
             {
-                from: './node_modules/leaflet/docs/images',
+                from: './node_modules/leaflet/dist/images',
                 to: './images'
             },
             {
@@ -100,7 +100,7 @@ module.exports = {
         ])
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'docs'),
+        contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9090,
         https: true
