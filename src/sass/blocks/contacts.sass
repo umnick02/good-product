@@ -1,0 +1,33 @@
+@import "../settings"
+
+.contacts
+  display: flex
+  width: 100%
+  flex-direction: row
+  flex-wrap: wrap
+  margin-bottom: 1rem
+  .contacts__map, .contacts__details
+    display: flex
+  #map
+    display: block
+    width: 100%
+  .contacts__details
+    display: flex
+    flex-direction: column
+    > div
+      display: flex
+@media(min-width: $desktop-width)
+  #map
+    height: 16rem
+  .contacts__map
+    width: 40%
+  .contacts__details
+    padding: 0 1%
+    width: 58%
+@media(max-width: $desktop-width)
+  #map
+    height: 12rem
+  .contacts__map
+    width: 100%
+  .contacts__details
+    width: 100%

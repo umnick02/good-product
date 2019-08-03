@@ -1,0 +1,17 @@
+@import "../settings"
+
+.title
+  display: flex
+  width: 100%
+  text-align: center
+  justify-content: center
+  font-family: 'Lobster', cursive
+  text-shadow: .3rem .3rem .3rem #aaa
+@media(min-width: $desktop-width)
+  .title
+    padding: 1rem 0
+    font-size: 1.6rem
+@media(max-width: $desktop-width)
+  .title
+    padding: .5rem 0
+    font-size: 1.1rem
