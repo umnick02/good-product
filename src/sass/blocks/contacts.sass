@@ -6,6 +6,7 @@
   flex-direction: row
   flex-wrap: wrap
   margin-bottom: 1rem
+  line-height: 2rem
   .contacts__map, .contacts__details
     display: flex
   #map
@@ -16,6 +17,10 @@
     flex-direction: column
     > div
       display: flex
+    a
+      font-size: 1.1rem
+      text-decoration: none
+      color: #0db14b
 @media(min-width: $desktop-width)
   #map
     height: 16rem
@@ -31,3 +36,5 @@
     width: 100%
   .contacts__details
     width: 100%
+    >div
+      margin: .2rem 0

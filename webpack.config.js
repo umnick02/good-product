@@ -1,6 +1,8 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -11,7 +13,10 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, 'docs'),
-        filename: '[name].bundle.js'
+        filename: '[name].[hash].bundle.js'
+    },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     devtool: "source-map",
     module: {
@@ -54,11 +59,14 @@ module.exports = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                        }
                     },
                     {
                         loader: "css-loader",
                         options: {
-                            sourceMap: true
+                            sourceMap: process.env.NODE_ENV === 'development'
                         }
                     },
                     {
@@ -67,7 +75,7 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
-                            sourceMap: true,
+                            sourceMap: process.env.NODE_ENV === 'development',
                         }
                     }
                 ]
@@ -81,16 +89,12 @@ module.exports = {
             inject: true
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: process.env.NODE_ENV === 'development' ? "[name].css" : "[name].[hash].css",
+            chunkFilename: process.env.NODE_ENV === 'development' ? "[id].css" : "[id].[hash].css"
         }),
         new CopyWebpackPlugin([
             {
                 from: './src/images',
-                to: './images'
-            },
-            {
-                from: './node_modules/leaflet/docs/images',
                 to: './images'
             },
             {
