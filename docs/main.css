@@ -670,12 +670,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 @media (min-width: 1024px) {
   .product {
     padding: 2% 0;
-    line-height: 1.6rem;
+    line-height: 2rem;
     font-size: 1.1rem; }
     .product > div {
       padding: 0 .6rem; }
     .product .product__img img {
-      width: 10rem; } }
+      width: 30rem; } }
 
 @media (max-width: 1024px) {
   .product {
