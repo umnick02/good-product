@@ -55,7 +55,7 @@ let isMobile = window.innerWidth < desktopWidth;
 
 const productsContainer = document.querySelector('.products');
 
-function removeProducts() {
+function clean() {
     productsContainer.innerHTML = '';
 }
 
@@ -117,11 +117,11 @@ function appendProducts() {
 window.addEventListener('resize', function () {
     if (window.innerWidth < desktopWidth && isMobile === false) {
         isMobile = true;
-        removeProducts();
-        appendProducts()
+        clean();
+        appendProducts();
     } else if (window.innerWidth >= desktopWidth && isMobile === true) {
         isMobile = false;
-        removeProducts();
+        clean();
         appendProducts();
     }
 });
